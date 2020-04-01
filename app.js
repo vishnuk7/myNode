@@ -11,6 +11,13 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
+/*
+The way of serving files in statically
+but file have only read-only access
+*/
+
+app.use(express.static(path.join(rootDir, "public")));
+
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
@@ -19,6 +26,7 @@ when you use app.use() method then it not check
 for absolute path so it execute whenever "/" find 
 and that's why into end
 */
+
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
 });
