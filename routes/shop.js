@@ -6,7 +6,9 @@ const shopProductController = require("../controller/shop");
 
 router.get("/", shopProductController.getIndex);
 
-router.get("/products", shopProductController.getProduct);
+router.get("/products", shopProductController.getProducts);
+
+router.get("/products/:productId", shopProductController.getProduct); // orders matter
 
 router.get("/cart", shopProductController.getCart);
 
